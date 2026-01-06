@@ -1,0 +1,26 @@
+name: Draw
+
+on:
+  schedule:
+    - cron: "30 0 * * *"   # daily 00:10 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Run script
+        run: bash ./draw.sh
+
+      - name: Push changes
+        run: git push
