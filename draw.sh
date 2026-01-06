@@ -52,7 +52,3 @@ echo "TODAY=$TODAY row=$row col=$col bit=$ch commits=$n"
 for i in $(seq 1 "$n"); do
   git commit --allow-empty -m "pixel($TODAY) $ch #$i"
 done
-
-if [[ "$n" -gt 0 ]]; then
-  git push origin HEAD
-fi
